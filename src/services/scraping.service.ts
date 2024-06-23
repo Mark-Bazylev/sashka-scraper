@@ -25,13 +25,14 @@ class ScrapingService {
         const { data } = await axios.get(url);
         const $ = cheerio.load(data);
         const productDetails = extractionModel.extractProductDetails($);
-        mockDb.set(productDetails.title, productDetails);
+        mockDb.set(productDetails.title, { ...productDetails, url });
       } catch (e) {
-        console.log(e);
+        //add error handling in the future
+        // console.log(e);
       }
     });
   }
-  public getExtractionModel(url:string) {
+  public getExtractionModel(url: string) {
     const parsedUrl = new URL(url);
     const domain = parsedUrl.hostname.split(".")[1];
     return extractionModels[domain];

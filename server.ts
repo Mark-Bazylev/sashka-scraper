@@ -1,4 +1,4 @@
-//Must be before imports so that env will be already configured
+//must be before imports so that env will be already configured
 import dotenv from "dotenv";
 dotenv.config()
 
