@@ -1,10 +1,9 @@
-import { ExtractionModelBase } from "./extraction-model-base";
-import cheerio from "cheerio";
-import { ProductDetails } from "../models/product-details";
+import {
+  ExtractionModelBase,
+  ProductDetailsExtractionFn,
+} from "./extraction-model-base";
 
-const extractAmazonProductDetails = (
-  $: ReturnType<typeof cheerio.load>,
-): Omit<ProductDetails, "url"> => {
+const extractAmazonProductDetails: ProductDetailsExtractionFn = ($) => {
   const title = $("#productTitle").text().trim();
   const price = $(".a-offscreen").first().text().trim();
   return { title, price };
