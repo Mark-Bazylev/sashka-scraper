@@ -1,6 +1,8 @@
 import { ExtractionModelBase } from "./extraction-model-base";
+import cheerio from "cheerio";
+import {ProductDetails} from "../models/product-details";
 
-const extractEbayProductDetails = ($: any) => {
+const extractEbayProductDetails= ($: ReturnType<typeof cheerio.load>):Omit<ProductDetails, "url">  => {
   const title = $(".x-item-title__mainTitle").text().trim();
   const price = $(".x-price-primary").text().trim();
   return { title, price };
