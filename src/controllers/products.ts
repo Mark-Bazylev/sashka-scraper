@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from "express";
-import { scraper } from "../services/scraping.service";
+import {scrapeProductsDetails} from "../services/scraping.service";
 import { mockDb, urlList } from "../db/productsDetailsDb";
 import { StatusCodes } from "http-status-codes";
 
@@ -8,7 +8,7 @@ export async function scrapeProducts(
   res: Response,
   next: NextFunction,
 ) {
-  const result = await scraper.scrapeProductsDetails(urlList);
+  const result = await scrapeProductsDetails(urlList);
   res.status(StatusCodes.OK).json({ result });
 }
 
