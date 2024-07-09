@@ -1,0 +1,17 @@
+<link rel="stylesheet" href="styles/products-list.css">
+<ul class="item-list">
+    <% if (products.length) { %>
+        <% products.forEach((product) => { %>
+            <li class="item">
+                <a href="<%= product.url %>" target="_blank">
+                    <span class="title"><%= product.title %></span>
+                    <span class="price"><%= product.price %></span>
+                </a>
+            </li>
+        <% }) %>
+    <% } else { %>
+        <span class="no-results">No Results</span>
+    <% } %>
+
+</ul>
+</div>

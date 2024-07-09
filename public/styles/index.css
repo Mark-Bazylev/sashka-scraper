@@ -1,0 +1,118 @@
+h1 {
+    position: relative;
+    left: -100%;
+    animation: slideIn 1s forwards;
+    font-family: "Rockwell ", sans-serif;
+}
+
+@keyframes slideIn {
+    to {
+        left: 0;
+    }
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5em 1.7em;
+    margin: 0 0.1em 0.1em 0;
+    border: 0.16em solid rgba(255, 255, 255, 0);
+    background-color: rgb(80, 10, 172);
+    border-radius: 2em;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: "Roboto", sans-serif;
+    font-weight: 300;
+    color: #ffffff;
+    text-shadow: 0 0.04em 0.04em rgba(0, 0, 0, 0.35);
+    text-align: center;
+    transition: all 0.2s;
+    width: 70px;
+    height: 30px;
+}
+
+button:hover {
+    border-color: rgb(255, 255, 255);
+}
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background-color: lightblue;
+    overflow: hidden;
+    padding: 10px;
+
+
+}
+
+.form-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 10px;
+}
+
+.result-container{
+    color: #270;
+    background-color: #DFF2BF;
+    display: flex;
+    justify-content: center;
+
+}
+
+.htmx-indicator{
+    display:none;
+}
+
+.htmx-request {
+    pointer-events: none;
+}
+.htmx-request .htmx-indicator{
+    display:inline;
+}
+.htmx-request.htmx-indicator{
+    display:inline;
+}
+
+
+.htmx-request .scrape-button-text {
+    display: none;
+}
+
+.products-container{
+    margin-top:10px;
+}
+
+.styled-label {
+    font-weight: bold;
+    color: #333;
+}
+
+.styled-input {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.styled-input:focus {
+    border-color: #66afe9;
+    box-shadow: 0 0 8px rgba(102, 175, 233, 0.6);
+    outline: none;
+}
+
+.styled-input::placeholder {
+    color: #999;
+}

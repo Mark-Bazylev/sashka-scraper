@@ -1,25 +1,16 @@
-import { Request, Response, NextFunction } from "express";
-import {scrapeProductsDetails} from "../services/scraping.service";
-import { mockDb, urlList } from "../db/productsDetailsDb";
+import { Request, Response } from "express";
+import { scrapeProductsDetails } from "../services/scraping.service";
+import { urlList } from "../db/productsDetailsDb";
 import { StatusCodes } from "http-status-codes";
+import { getFilteredProducts } from "../services/products.service";
 
-export async function scrapeProducts(
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) {
+export async function scrapeProducts(req: Request, res: Response) {
   const result = await scrapeProductsDetails(urlList);
-  res.status(StatusCodes.OK).json({ result });
+  res.status(StatusCodes.OK).render("scrape-response", { result });
 }
 
-export async function getProducts(
-  req: Request,
-  res: Response,
-  next: NextFunction,
-) {
+export async function getProducts(req: Request, res: Response) {
   const { search } = req.query as Record<string, string>;
-  const results = Array.from(mockDb.values()).filter((productDetails) =>
-    productDetails.title.toLowerCase().includes(search.toLowerCase()),
-  );
-  res.status(StatusCodes.OK).json({ results });
+  const products = getFilteredProducts(search);
+  res.status(StatusCodes.OK).render("products-list", { products });
 }

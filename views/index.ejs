@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8"/>
+    <meta
+            name="viewport"
+            content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+    />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Sashka Scraper</title>
+    <script
+            src="https://unpkg.com/htmx.org@2.0.0"
+            integrity="sha384-wS5l5IKJBvK6sPTKa2WZ1js3d947pvWXbPJ1OmWfEuxLgeHcEbjUUA5i9V5ZkpCw"
+            crossorigin="anonymous"
+            defer
+    ></script>
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+<body>
+<div class="main-container">
+    <h1>Welcome to Sashka Scraper</h1>
+    <form class="form-container" hx-get="/api/get-products" hx-target="#products" hx-swap="innerHTML">
+        <button
+                hx-get="/api/scrape"
+                hx-target="#products"
+                hx-swap="innerHTML"
+        >
+            <span class="scrape-button-text">Scrape</span>
+            <img class="htmx-indicator" src="assets/fade-stagger-circles.svg"/>
+        </button>
+        <label class="styled-label" for="searchInput">Search:</label>
+        <input class="styled-input" type="text" id="searchInput" name="search" placeholder="Enter Search term">
+        <button type="submit">Search</button>
+    </form>
+</div>
+<div class="products-container" id="products"></div>
+</body>
+</html>
