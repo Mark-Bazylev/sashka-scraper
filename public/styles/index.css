@@ -3,6 +3,7 @@ h1 {
     left: -100%;
     animation: slideIn 1s forwards;
     font-family: "Rockwell ", sans-serif;
+    padding: 10px;
 }
 
 @keyframes slideIn {
